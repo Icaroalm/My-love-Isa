@@ -1,108 +1,104 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seu Gay</title>
-        
+    <title>Love Card</title>
     <style>
-       body{
-        background-color: red;
-        text-align: center;
-    
-    }
-        .painel{
-        padding-top: 20px;
-        margin: auto;
-        width: 500px;
-        height: 570px;
-        background-color: white;
-        border-radius: 20px;
-        
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    }
-    
-    h1{
-      font-size: 500;
-
-    }
-    
-    #sim{
-        
-        width: 80px;
-        height: 60px;
-        border-radius: 10px;
-        background-color: red;
-        color: bisque;
-        font-size: 25px;
-        margin-left: -90px;
-        
-        
-    }
-    #nao{
-        position: absolute;
-        width: 80px;
-        height: 60px;
-        border-radius: 10px;
-        background-color: red;
-        color: bisque;
-        font-size: 25px;
-        margin-left: 10px;
-        
-    }
-    audio {
-            display: none;
+        body {
+            text-align: center;
+            background-color: red;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            ;
+            color: aliceblue;
         }
-    
-    </style>
 
+        .message {
+            display: none;
+            margin: 20px;
+        }
+
+        button {
+            font-size: 35px;
+        }
+
+        .bb {
+            background-color: transparent;
+            /* Remove o fundo do botão */
+            border: none;
+            /* Remove a borda do botão */
+            padding: 0;
+            /* Remove o preenchimento interno do botão */
+        }
+
+        .gif {
+            width: 100px;
+            /* Largura da imagem */
+            height: auto;
+            /* Altura automática para manter proporções */
+            border: none;
+            /* Remove a borda da imagem */
+            display: block;
+            /* Faz a imagem ser exibida como bloco para alinhamento */
+            margin: auto;
+            /* Centraliza a imagem dentro do botão */
+        }
+    </style>
 </head>
+
 <body>
-    
-    <audio id="myAudio"
-         src="audiofile.mp3" type="audio/mpeg">
+    <h1>Clique no Gif</h1>
+    <button class="bb" onclick="showMessage('principal'); playAudio('audio')"><img class="gif"
+            src="https://images.emojiterra.com/google/noto-emoji/unicode-15/animated/1f48c.gif" alt=""></button>
+
+    <div id="principal" class="message">
+        <h1>Clique nos corações</h1>
+        <button onclick="showMessage('msg1');">❤️</button>
+        <button onclick="showMessage('msg2')">❤️</button>
+        <button onclick="showMessage('msg3')">❤️</button>
+    </div>
+
+    <div id="msg1" class="message">
+        <h2>I love you!</h2>
+        <p>Meu amor por você é como uma chama que nunca se apaga. Cada batida do meu coração é um lembrete do quanto eu
+            te amo.</p>
+        <img src="https://media.tenor.com/sRCdp4IKweAAAAAM/ana-blottiaux-cute.gif" alt="">
+    </div>
+    <div id="msg2" class="message">
+        <h2>You're amazing!</h2>
+        <p>Você é incrível em tudo o que faz. Sua presença ilumina meu mundo de uma maneira única e especial.</p>
+        <img src="https://media.tenor.com/VWhSsjOHYhMAAAAM/goma-peach.gif" alt="">
+    </div>
+    <div id="msg3" class="message">
+        <h2>Can't wait to see you!</h2>
+        <p>A cada momento longe de você, meu coração anseia pelo seu abraço caloroso. Mal posso esperar para estar ao
+            seu lado novamente.</p>
+        <img src="https://media.tenor.com/Uj8Azt71QvMAAAAM/richie-pooh-clingy.gif" alt="">
+        <p>Seja essa pessoa linda e maravilhosa, que seus sonhos se realizem. Você é especial para mim</p>
+        <h1>I LOVE YOU!!</h1>
+        <footer>
+            <p>Criado por Ícaro Almeida &copy; 2024</p>
+        </footer>
+    </div>
+
+    <audio id="audio" autoplay> Inicia automaticamente e toca
+        <source src="Ed Sheeran - Perfect.mp3" type="audio/mpeg">
         Seu navegador não suporta o elemento de áudio.
     </audio>
-  
-    <div class="painel">
-        
-        <h1>Responda se teu irmão é gay!!!</h1>
-        <img src="https://i.gifer.com/origin/e6/e63825a35861f491f1d6605dcfd158f5_w200.gif">
-        <h2>Escolha qual a opção!</h2>
 
 
-    <a href="https://i.makeagif.com/media/11-15-2015/luyI9E.gif"><button id="sim"> Sim! </button></a>
-    <button onclick= "fuja()" id="nao"> Não! </button>
+    <script>
+        function showMessage(id) {
+            document.getElementById(id).style.display = 'block';
+        }
 
-
-</div>
-<script>
-
-    function fuja(){
-        var botaoNao = document.getElementById("nao")
-        
-        var larguraJanela = window.innerWidth;
-        var alturaJanela = window.innerHeight;
-
-        var maxX = larguraJanela - botaoNao.offsetWidth;
-        var maxY = alturaJanela - botaoNao.offsetHeight;
-
-        var aleatorioX = Math.floor(Math.random() * maxX);
-        var aleatorioY = Math.floor(Math.random() * maxY);
-
-        botaoNao.style.left = aleatorioX + "px";
-        botaoNao.style.top = aleatorioY + "px";
-
-        
-    }
-
-     window.addEventListener('load', function() {
-            var audio = document.getElementById('myAudio');
-            audio.play().catch(function(error) {
-                console.log('Reprodução automática bloqueada:', error);
-            });
-        });
-</script>
-
+        function playAudio(id) {
+            var audio = document.getElementById(id);
+            audio.play();
+            currentAudio = audio;
+        } 
+    </script>
 </body>
+
 </html>
